@@ -9,6 +9,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.dfs.reminder.adapter.TabsFragmentAdapter;
 
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ViewPager viewPager;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppDefault);
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         initToolbar();
         initNavigationView();
         initTabs();
+
     }
 
     private void initToolbar() {
@@ -70,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void showNotificationTab(){
         viewPager.setCurrentItem(Constants.TAB_TWO);
     }
+
 }

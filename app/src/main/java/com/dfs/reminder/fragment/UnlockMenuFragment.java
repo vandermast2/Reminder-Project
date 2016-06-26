@@ -12,19 +12,18 @@ import com.dfs.reminder.R;
 /**
  * Created by Sam on 6/25/2016.
  */
-public class HistoryFragment extends AbstractTagFragment {
-    private static final int LAYOUT= R.layout.fragment_example;
+public class UnlockMenuFragment extends AbstractTagFragment {
+    private static final int LAYOUT= R.layout.fragment_unlock;
 
-    public static HistoryFragment getInstanse(Context context) {
+    public static UnlockMenuFragment getInstanse(Context context) {
         Bundle args=new Bundle();
-        HistoryFragment fragment=new HistoryFragment();
+        UnlockMenuFragment fragment=new UnlockMenuFragment();
         fragment.setArguments(args);
         fragment.setContext(context);
-        fragment.setTitle(context.getString(R.string.tab_item_History));
+        fragment.setTitle(context.getString(R.string.tab_item_Unlock));
         return fragment;
 
     }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,4 +34,5 @@ public class HistoryFragment extends AbstractTagFragment {
     public void setContext(Context context) {
         this.context = context;
     }
+
 }

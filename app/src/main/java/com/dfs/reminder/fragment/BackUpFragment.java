@@ -12,14 +12,14 @@ import com.dfs.reminder.R;
 /**
  * Created by Sam on 6/25/2016.
  */
-public class IdeasFragment extends AbstractTagFragment {
-    private static final int LAYOUT= R.layout.fragment_example;
-    public static IdeasFragment getInstanse(Context context) {
+public class BackUpFragment extends AbstractTagFragment {
+    private static final int LAYOUT= R.layout.fragment_unlock;
+    public static BackUpFragment getInstanse(Context context) {
         Bundle args=new Bundle();
-        IdeasFragment fragment=new IdeasFragment();
+        BackUpFragment fragment=new BackUpFragment();
         fragment.setArguments(args);
         fragment.setContext(context);
-        fragment.setTitle(context.getString(R.string.tab_item_Ideas));
+        fragment.setTitle(context.getString(R.string.tab_item_backup));
         return fragment;
 
     }

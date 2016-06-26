@@ -12,17 +12,16 @@ import com.dfs.reminder.R;
 /**
  * Created by Sam on 6/25/2016.
  */
-public class TODOFragment extends AbstractTagFragment {
-    private static final int LAYOUT= R.layout.fragment_example;
+public class GeneralSettingsFragment extends AbstractTagFragment {
+    private static final int LAYOUT= R.layout.fragment_general_settings;
 
-    public static TODOFragment getInstanse(Context context) {
+    public static GeneralSettingsFragment getInstanse(Context context) {
         Bundle args=new Bundle();
-        TODOFragment fragment=new TODOFragment();
+        GeneralSettingsFragment fragment=new GeneralSettingsFragment();
         fragment.setArguments(args);
         fragment.setContext(context);
-        fragment.setTitle(context.getString(R.string.tab_item_TODO));
+        fragment.setTitle(context.getString(R.string.tab_item_General));
         return fragment;
-
     }
     @Nullable
     @Override
@@ -34,5 +33,4 @@ public class TODOFragment extends AbstractTagFragment {
     public void setContext(Context context) {
         this.context = context;
     }
-
 }

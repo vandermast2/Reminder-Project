@@ -4,11 +4,13 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
 import com.dfs.reminder.fragment.AbstractTagFragment;
-import com.dfs.reminder.fragment.BirthdayFragment;
-import com.dfs.reminder.fragment.HistoryFragment;
-import com.dfs.reminder.fragment.IdeasFragment;
-import com.dfs.reminder.fragment.TODOFragment;
+
+import com.dfs.reminder.fragment.GeneralSettingsFragment;
+import com.dfs.reminder.fragment.BackUpFragment;
+import com.dfs.reminder.fragment.UnlockMenuFragment;
+import com.dfs.reminder.fragment.USB_settings;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,9 +48,9 @@ public class TabsFragmentAdapter extends FragmentPagerAdapter{
 
     private void initTabsMap(Context context) {
         tabs = new HashMap<>();
-        tabs.put(0, BirthdayFragment.getInstanse(context));
-        tabs.put(1, HistoryFragment.getInstanse(context));
-        tabs.put(2, IdeasFragment.getInstanse(context));
-        tabs.put(3, TODOFragment.getInstanse(context));
+        tabs.put(0, GeneralSettingsFragment.getInstanse(context));
+        tabs.put(1, USB_settings.getInstanse(context));
+        tabs.put(2, UnlockMenuFragment.getInstanse(context));
+        tabs.put(3, BackUpFragment.getInstanse(context));
     }
 }

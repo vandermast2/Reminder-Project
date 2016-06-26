@@ -12,15 +12,15 @@ import com.dfs.reminder.R;
 /**
  * Created by Sam on 6/25/2016.
  */
-public class BirthdayFragment extends AbstractTagFragment {
-    private static final int LAYOUT= R.layout.fragment_example;
+public class USB_settings extends AbstractTagFragment {
+    private static final int LAYOUT= R.layout.fragment_usb_settings;
 
-    public static BirthdayFragment getInstanse(Context context) {
+    public static USB_settings getInstanse(Context context) {
         Bundle args=new Bundle();
-        BirthdayFragment fragment=new BirthdayFragment();
+        USB_settings fragment=new USB_settings();
         fragment.setArguments(args);
         fragment.setContext(context);
-        fragment.setTitle(context.getString(R.string.tab_item_Ideas));
+        fragment.setTitle(context.getString(R.string.tab_item_USB_settings));
         return fragment;
 
     }
