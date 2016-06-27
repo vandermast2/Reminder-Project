@@ -3,6 +3,102 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" >
 
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MTP"
+            android:id="@+id/radioButtonMTP"
+            android:layout_gravity="left"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp" />
 
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MTP+ADB"
+            android:id="@+id/radioButtonMTP_ADB"
+            android:layout_gravity="left"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PTP"
+            android:id="@+id/radioButtonPTP"
+            android:layout_gravity="left"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PTP+ADB"
+            android:id="@+id/radioButtonPTP_ADB"
+            android:layout_gravity="left"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RNDIS+ADB"
+            android:id="@+id/radioButtonRNDIS_ADB"
+            android:layout_gravity="left"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RNDIS+DM+MODEM"
+            android:id="@+id/radioButtonRNDIS_DM_Modem"
+            android:layout_gravity="left"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RMNET+DM+MODEM"
+            android:id="@+id/radioButtonRMNET_DM_Modem"
+            android:layout_gravity="left"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DM+MODEM+ADB"
+            android:id="@+id/radioButtonDM_Modem_ADB"
+            android:layout_gravity="left"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mass Storage"
+            android:id="@+id/radioButtonMassStorage"
+            android:layout_gravity="left"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mass Storage+ADB"
+            android:id="@+id/radioButtonMassStorage_ADB"
+            android:layout_gravity="left"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp" />
+
+    </RadioGroup>
 </LinearLayout>
