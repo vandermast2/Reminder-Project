@@ -9,7 +9,6 @@ import android.view.View;
  */
 public class AbstractTagFragment extends Fragment {
     private String title;
-
     protected Context context;
     protected View view;
 

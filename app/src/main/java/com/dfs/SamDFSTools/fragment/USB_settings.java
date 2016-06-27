@@ -7,15 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.dfs.SamDFSTools.R;
 
-/**
- * Created by Sam on 6/25/2016.
- */
+
 public class USB_settings extends AbstractTagFragment {
     private static final int LAYOUT= R.layout.fragment_usb_settings;
-    private  RadioGroup radiogroup;
+
 
 
     public static USB_settings getInstanse(Context context) {
@@ -28,10 +27,17 @@ public class USB_settings extends AbstractTagFragment {
 
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
+
         return view;
     }
 
@@ -39,5 +45,6 @@ public class USB_settings extends AbstractTagFragment {
     public void setContext(Context context) {
         this.context = context;
     }
+
 
 }

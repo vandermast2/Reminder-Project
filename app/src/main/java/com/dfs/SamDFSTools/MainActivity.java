@@ -1,5 +1,7 @@
 package com.dfs.SamDFSTools;
 
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -8,8 +10,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
 import android.view.MenuItem;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.dfs.SamDFSTools.adapter.TabsFragmentAdapter;
+import com.dfs.SamDFSTools.fragment.GeneralSettingsFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ViewPager viewPager;
+
+    private TextView model_item;
+
+    private static final int BUFFER_SIZE = 1024;
 
 
     @Override

@@ -7,8 +7,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Model:"
+
+        android:text="@string/general_item_model"
         android:id="@+id/textModel"
         android:layout_gravity="left"
         android:layout_marginLeft="20dp"
@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+
         android:text="Software:"
         android:id="@+id/textSoftware"
         android:layout_gravity="left"
@@ -29,7 +29,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+
         android:text="Baseband:"
         android:id="@+id/textBaseband"
         android:layout_gravity="left"
@@ -40,7 +40,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+
         android:text="Bootloader:"
         android:id="@+id/textBootloader"
         android:layout_gravity="left"
@@ -51,7 +51,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+
         android:text="Has Root?:"
         android:id="@+id/textHasRoot"
         android:layout_gravity="left"
@@ -62,7 +62,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+
         android:text="SU:"
         android:id="@+id/textSUVersion"
         android:layout_gravity="left"
@@ -73,9 +73,53 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+
         android:text="MSL/SPC:"
         android:id="@+id/textSPC"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#2176dd" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="IMEI:"
+        android:id="@+id/textIMEI"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#2176dd" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Phone№:"
+        android:id="@+id/textPhone"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#2176dd" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Operator:"
+        android:id="@+id/textOperator"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#2176dd" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Phonetype:"
+        android:id="@+id/textPhohetype"
         android:layout_gravity="left"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
