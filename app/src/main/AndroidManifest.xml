@@ -20,12 +20,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.provider.Telephony.SECRET_CODE" />
-                <data android:scheme="android_secret_code" android:host="GTUSBUtil" />
-                <data android:scheme="android_secret_code" android:host="GTAPConf" />
-                <data android:scheme="android_secret_code" android:host="GTXOR" />
-                <data android:scheme="android_secret_code" android:host="OEMRaw" />
+
             </intent-filter>
 
         </activity>

@@ -32,6 +32,7 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     private TextView itemSim;
     private TextView itemMNCMCC;
     private TextView itemRadiotype;
+    private TextView itemSimReady;
 
     private static final String baseband;
     private static final String bootloader;
@@ -77,6 +78,10 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         itemSpc = (TextView)view.findViewById(R.id.textSPC);
         itemIMEI = (TextView)view.findViewById(R.id.textIMEI);
         itemPhone = (TextView)view.findViewById(R.id.textPhone);
+        itemOperator = (TextView)view.findViewById(R.id.textOperator);
+        itemPhonetype = (TextView)view.findViewById(R.id.textPhohetype);
+        itemMNCMCC = (TextView)view.findViewById(R.id.textMNCMCC);
+        itemSimReady = (TextView)view.findViewById(R.id.textSimReady);
 
 
         changeGeneral();
@@ -87,16 +92,18 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     private void changeGeneral(){
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         Util util = new Util(context);
-        String board = System.getProperty("ro.board");
-        String operator = util.operator();
-        String phonetype = util.radio();
+        //String board = System.getProperty("ro.board");
+
+        String network = util.radio();
         String sim = util.sim();
-        //String imei = util.imei();
+
         String mncmcc = util.MNCMCC();
         String radiotype = util.radiotype();
 
         String imei = tm.getDeviceId();
         String phone = tm.getLine1Number();
+        String operator = tm.getNetworkOperatorName();
+
 
         itemModel.setText("Model: "+model);
         itemSoftware.setText("Software: "+software);
@@ -104,6 +111,11 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         itemBootloader.setText("Bootloader: "+bootloader);
         itemIMEI.setText("IMEI: "+imei);
         itemPhone.setText("Phone №: "+phone);
+        itemOperator.setText("Operator: " + operator);
+        itemPhonetype.setText("Phonetype: "+radiotype);
+        itemMNCMCC.setText("MNC/MCC: "+mncmcc);
+        itemSimReady.setText("Sim Ready: "+sim);
+
         msl();
 
     }

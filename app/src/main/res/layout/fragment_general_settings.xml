@@ -125,4 +125,26 @@
         android:layout_marginTop="5dp"
         android:textColor="#2176dd" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="MNCMCC:"
+        android:id="@+id/textMNCMCC"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#2176dd" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Sim Ready:"
+        android:id="@+id/textSimReady"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#2176dd" />
+
 </LinearLayout>
