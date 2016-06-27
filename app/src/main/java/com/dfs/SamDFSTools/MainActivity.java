@@ -1,4 +1,4 @@
-package com.dfs.reminder;
+package com.dfs.SamDFSTools;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -9,8 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-
-import com.dfs.reminder.adapter.TabsFragmentAdapter;
+import com.dfs.SamDFSTools.adapter.TabsFragmentAdapter;
 
 
 public class MainActivity extends AppCompatActivity {

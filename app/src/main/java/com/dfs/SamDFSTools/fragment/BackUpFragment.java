@@ -1,4 +1,4 @@
-package com.dfs.reminder.fragment;
+package com.dfs.SamDFSTools.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,23 +7,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.dfs.reminder.R;
+import com.dfs.SamDFSTools.R;
 
 /**
  * Created by Sam on 6/25/2016.
  */
-public class UnlockMenuFragment extends AbstractTagFragment {
+public class BackUpFragment extends AbstractTagFragment {
     private static final int LAYOUT= R.layout.fragment_unlock;
-
-    public static UnlockMenuFragment getInstanse(Context context) {
+    public static BackUpFragment getInstanse(Context context) {
         Bundle args=new Bundle();
-        UnlockMenuFragment fragment=new UnlockMenuFragment();
+        BackUpFragment fragment=new BackUpFragment();
         fragment.setArguments(args);
         fragment.setContext(context);
-        fragment.setTitle(context.getString(R.string.tab_item_Unlock));
+        fragment.setTitle(context.getString(R.string.tab_item_backup));
         return fragment;
 
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,5 +34,4 @@ public class UnlockMenuFragment extends AbstractTagFragment {
     public void setContext(Context context) {
         this.context = context;
     }
-
 }

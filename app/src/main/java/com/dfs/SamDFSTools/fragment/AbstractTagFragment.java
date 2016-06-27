@@ -1,4 +1,4 @@
-package com.dfs.reminder.fragment;
+package com.dfs.SamDFSTools.fragment;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;

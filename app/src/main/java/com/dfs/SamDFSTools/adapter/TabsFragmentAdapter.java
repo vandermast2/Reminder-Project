@@ -1,16 +1,16 @@
-package com.dfs.reminder.adapter;
+package com.dfs.SamDFSTools.adapter;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.dfs.reminder.fragment.AbstractTagFragment;
+import com.dfs.SamDFSTools.fragment.AbstractTagFragment;
 
-import com.dfs.reminder.fragment.GeneralSettingsFragment;
-import com.dfs.reminder.fragment.BackUpFragment;
-import com.dfs.reminder.fragment.UnlockMenuFragment;
-import com.dfs.reminder.fragment.USB_settings;
+import com.dfs.SamDFSTools.fragment.GeneralSettingsFragment;
+import com.dfs.SamDFSTools.fragment.BackUpFragment;
+import com.dfs.SamDFSTools.fragment.UnlockMenuFragment;
+import com.dfs.SamDFSTools.fragment.USB_settings;
 
 import java.util.HashMap;
 import java.util.Map;

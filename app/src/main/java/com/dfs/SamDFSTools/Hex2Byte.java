@@ -1,4 +1,4 @@
-package com.dfs.reminder;
+package com.dfs.SamDFSTools;
 
 import android.support.v4.media.TransportMediator;
 

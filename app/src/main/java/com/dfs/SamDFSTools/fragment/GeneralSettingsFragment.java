@@ -1,4 +1,4 @@
-package com.dfs.reminder.fragment;
+package com.dfs.SamDFSTools.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.dfs.reminder.R;
+import com.dfs.SamDFSTools.R;
 
 /**
  * Created by Sam on 6/25/2016.

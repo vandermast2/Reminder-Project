@@ -1,4 +1,4 @@
-package com.dfs.reminder;
+package com.dfs.SamDFSTools;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

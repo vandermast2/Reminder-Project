@@ -1,4 +1,4 @@
-package com.dfs.reminder;
+package com.dfs.SamDFSTools;
 
 /**
  * Created by Sam on 6/26/2016.
