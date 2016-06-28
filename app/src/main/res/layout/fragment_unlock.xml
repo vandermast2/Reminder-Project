@@ -3,15 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     style="@style/Base.ThemeOverlay.AppCompat.Dark">
 
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="149dp"
-        android:layout_gravity="left"
-        android:layout_weight="0.84"
+        android:layout_height="148dp"
         android:layout_margin="20dp">
 
 
@@ -19,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Factory mode"
-            android:id="@+id/switch2"
+            android:id="@+id/switchFactory"
             android:layout_gravity="top|right"
             android:layout_margin="10dp" />
 
@@ -45,7 +43,8 @@
             android:text="Debranding"
             android:id="@+id/btnDebranding"
             android:layout_gravity="left|top"
-            android:background="#07b2eb" />
+            android:background="@color/color_btn"
+            android:textColor="@color/color_white" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -54,7 +53,8 @@
             android:text="Hidden Menu"
             android:id="@+id/btnHiddenMenu"
             android:layout_gravity="left|center_vertical"
-            android:background="#07b2eb" />
+            android:background="@color/color_btn"
+            android:textColor="@color/color_white" />
 
         <Button
             android:layout_width="122dp"
@@ -62,8 +62,44 @@
             android:text="New Button"
             android:id="@+id/button"
             android:layout_gravity="left|bottom"
-            android:background="#07b2eb" />
+            android:background="@color/color_btn"
+            android:textColor="@color/color_white" />
 
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.36">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/button2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal|top" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/button3"
+            android:layout_gravity="right|center_vertical" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/button4"
+            android:layout_gravity="center_horizontal|bottom" />
     </FrameLayout>
 
 

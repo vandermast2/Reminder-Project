@@ -13,6 +13,7 @@ import com.dfs.SamDFSTools.OEMRil;
 import com.dfs.SamDFSTools.R;
 import com.dfs.SamDFSTools.Util;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -37,6 +38,7 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     private TextView itemRadiotype;
     private TextView itemSimReady;
     private TextView itemUsbf;
+    TextView tv;
 
     private static final String baseband;
     private static final String bootloader;
@@ -88,9 +90,11 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         itemMNCMCC = (TextView)view.findViewById(R.id.textMNCMCC);
         itemSimReady = (TextView)view.findViewById(R.id.textSimReady);
         itemUsbf = (TextView)view.findViewById(R.id.textUsbf);
+        tv = (TextView)view.findViewById(R.id.textSUVersion);
 
         changeGeneral();
         suSetIt();
+        sudo();
         usbf();
 
         return view;
@@ -176,6 +180,23 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
 
     private static boolean isRooted() {
         return findBinary("su");
+    }
+
+    public void sudo() {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec("su -v").getInputStream()));
+            StringBuilder log = new StringBuilder();
+            while (true) {
+                String line = bufferedReader.readLine();
+                if (line != null) {
+                    log.append(line + "\n");
+                } else {
+                    tv.setText("Binary: " + log.toString());
+                    return;
+                }
+            }
+        } catch (IOException e) {
+        }
     }
 
     public void msl() {

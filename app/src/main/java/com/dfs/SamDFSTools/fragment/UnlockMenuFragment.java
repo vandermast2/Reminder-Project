@@ -8,11 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Switch;
 
 import com.dfs.SamDFSTools.R;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 
 /**
@@ -21,6 +24,10 @@ import java.io.OutputStream;
 public class UnlockMenuFragment extends AbstractTagFragment {
     private static final int LAYOUT= R.layout.fragment_unlock;
     private java.lang.Process su = null;
+    private Switch switchHiddenMenu;
+    private Switch switchFactory;
+    private Button btnDebranding;
+
 
     public static UnlockMenuFragment getInstanse(Context context) {
         Bundle args=new Bundle();
@@ -36,7 +43,10 @@ public class UnlockMenuFragment extends AbstractTagFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
 
-        Button btnDebranding = (Button) view.findViewById(R.id.btnDebranding);
+        btnDebranding = (Button) view.findViewById(R.id.btnDebranding);
+        switchHiddenMenu = (Switch) view.findViewById(R.id.switchHiddenMenu);
+        switchFactory = (Switch) view.findViewById(R.id.switchFactory);
+
 
         btnDebranding.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -44,7 +54,120 @@ public class UnlockMenuFragment extends AbstractTagFragment {
             }
         });
 
+        try {
+            factory();
+        } catch (Exception e) {
+        }
+//        try {
+//            keystring();
+//        } catch (Exception e3) {
+//        }
+//        try {
+//            buildtype();
+//        } catch (Exception e4) {
+//        }
+        try {
+            hidden();
+        } catch (Exception e5) {
+        }
+
+
+
         return view;
+    }
+
+    public void hidden() {
+        Exception e1;
+        try {
+            su = Runtime.getRuntime().exec(new String[]{"cat", "/efs/carrier/HiddenMenu"});
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BufferedReader reader = null;
+        try {
+            BufferedReader reader2 = new BufferedReader(new InputStreamReader(su.getInputStream()));
+            try {
+
+                reader = reader2;
+            } catch (Exception e2) {
+                e1 = e2;
+                reader = reader2;
+                e1.printStackTrace();
+                if (!reader.readLine().equals("ON")) {
+                    switchHiddenMenu.setChecked(true);
+                } else if (!reader.readLine().equals("OFF")) {
+                    this.switchHiddenMenu.setChecked(false);
+                }
+            }
+        } catch (Exception e3) {
+            e1 = e3;
+            e1.printStackTrace();
+            try {
+                if (!reader.readLine().equals("ON")) {
+                    this.switchHiddenMenu.setChecked(true);
+                } else if (!reader.readLine().equals("OFF")) {
+                    this.switchHiddenMenu.setChecked(false);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            if (!reader.readLine().equals("ON")) {
+                this.switchHiddenMenu.setChecked(true);
+            } else if (!reader.readLine().equals("OFF")) {
+                this.switchHiddenMenu.setChecked(false);
+            }
+        } catch (IOException e4) {
+            e4.printStackTrace();
+        }
+    }
+
+    public void factory() {
+        Exception e1;
+        try {
+            su = Runtime.getRuntime().exec(new String[]{"cat", "/efs/FactoryApp/factorymode"});
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BufferedReader reader = null;
+        try {
+            BufferedReader reader2 = new BufferedReader(new InputStreamReader(su.getInputStream()));
+            try {
+                this.switchFactory = (Switch) view.findViewById(R.id.switchFactory);
+                reader = reader2;
+            } catch (Exception e2) {
+                e1 = e2;
+                reader = reader2;
+                e1.printStackTrace();
+                if (!reader.readLine().equals("ON")) {
+                    this.switchFactory.setChecked(true);
+                } else if (!reader.readLine().equals("OFF")) {
+                    this.switchFactory.setChecked(false);
+                }
+            }
+        } catch (Exception e3) {
+            e1 = e3;
+            e1.printStackTrace();
+            try {
+                if (!reader.readLine().equals("ON")) {
+                    this.switchFactory.setChecked(true);
+                } else if (!reader.readLine().equals("OFF")) {
+                    this.switchFactory.setChecked(false);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            if (!reader.readLine().equals("ON")) {
+                this.switchFactory.setChecked(true);
+            } else if (!reader.readLine().equals("OFF")) {
+                this.switchFactory.setChecked(false);
+            }
+        } catch (IOException e4) {
+            e4.printStackTrace();
+        }
     }
 
     private void debranding(){
