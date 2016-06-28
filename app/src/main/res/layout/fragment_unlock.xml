@@ -1,34 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:orientation="horizontal"
+    style="@style/Base.ThemeOverlay.AppCompat.Dark">
 
 
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hidden Menu"
-        android:id="@+id/switchHiddenMenu"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="right" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="149dp"
+        android:layout_gravity="left"
+        android:layout_weight="0.84"
+        android:layout_margin="20dp">
 
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Keystring"
-        android:layout_gravity="right" />
 
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Factory mode"
-        android:id="@+id/switch2"
-        android:layout_gravity="right" />
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Factory mode"
+            android:id="@+id/switch2"
+            android:layout_gravity="top|right"
+            android:layout_margin="10dp" />
 
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buld type"
-        android:id="@+id/switch1"
-        android:layout_gravity="right" />
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hidden Menu"
+            android:id="@+id/switchHiddenMenu"
+            android:layout_gravity="center_vertical|right"
+            android:layout_margin="10dp" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keystring"
+            android:layout_gravity="right|bottom"
+            android:layout_margin="10dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="122dp"
+            android:layout_height="wrap_content"
+            android:text="Debranding"
+            android:id="@+id/btnDebranding"
+            android:layout_gravity="left|top"
+            android:background="#07b2eb" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="122dp"
+            android:layout_height="wrap_content"
+            android:text="Hidden Menu"
+            android:id="@+id/btnHiddenMenu"
+            android:layout_gravity="left|center_vertical"
+            android:background="#07b2eb" />
+
+        <Button
+            android:layout_width="122dp"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/button"
+            android:layout_gravity="left|bottom"
+            android:background="#07b2eb" />
+
+    </FrameLayout>
+
+
 </LinearLayout>
