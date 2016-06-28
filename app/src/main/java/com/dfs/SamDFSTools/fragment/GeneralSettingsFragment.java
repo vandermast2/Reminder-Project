@@ -10,9 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.dfs.SamDFSTools.BuildConfig;
 import com.dfs.SamDFSTools.OEMRil;
 import com.dfs.SamDFSTools.R;
 import com.dfs.SamDFSTools.Util;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Created by Sam on 6/25/2016.
@@ -33,6 +37,7 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     private TextView itemMNCMCC;
     private TextView itemRadiotype;
     private TextView itemSimReady;
+    private TextView itemUsbf;
 
     private static final String baseband;
     private static final String bootloader;
@@ -82,9 +87,10 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         itemPhonetype = (TextView)view.findViewById(R.id.textPhohetype);
         itemMNCMCC = (TextView)view.findViewById(R.id.textMNCMCC);
         itemSimReady = (TextView)view.findViewById(R.id.textSimReady);
-
+        itemUsbf = (TextView)view.findViewById(R.id.textUsbf);
 
         changeGeneral();
+        usbf();
 
         return view;
     }
@@ -113,12 +119,42 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         itemPhone.setText("Phone №: "+phone);
         itemOperator.setText("Operator: " + operator);
         itemPhonetype.setText("Phonetype: "+radiotype);
-        itemMNCMCC.setText("MNC/MCC: "+mncmcc);
+        try {
+
+            String mnc= mncmcc.substring(0, 3);
+            String mcc = mncmcc.substring(3, 6);
+            itemMNCMCC.setText("MNC: "+mnc + " MCC: " + mcc);
+        } catch (Exception e6) {
+            e6.printStackTrace();
+        }
+        //itemMNCMCC.setText("MNC/MCC: "+mncmcc);
         itemSimReady.setText("Sim Ready: "+sim);
 
         msl();
 
     }
+
+    public void usbf() {
+        try {
+            InputStreamReader isr = new InputStreamReader(Runtime.getRuntime().exec("getprop sys.usb.state\n").getInputStream());
+            //String foo = BuildConfig.VERSION_NAME;
+            String foo = "Usb State: ";
+            while (true) {
+                int c = isr.read();
+                if (c >= 0) {
+                    foo =foo+((char) c);
+                   // foo = ((char) c);
+                } else {
+                    itemUsbf.setText(foo);
+                   //itemUsbf.setTextColor(153238113);
+                    return;
+                }
+            }
+        } catch (IOException e) {
+        }
+    }
+
+
     public void msl() {
         try {
             OEMRil.getMSL(getContext());
