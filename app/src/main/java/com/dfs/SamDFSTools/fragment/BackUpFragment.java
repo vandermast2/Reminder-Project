@@ -13,7 +13,7 @@ import com.dfs.SamDFSTools.R;
  * Created by Sam on 6/25/2016.
  */
 public class BackUpFragment extends AbstractTagFragment {
-    private static final int LAYOUT= R.layout.fragment_unlock;
+    private static final int LAYOUT= R.layout.fragment_backup;
     public static BackUpFragment getInstanse(Context context) {
         Bundle args=new Bundle();
         BackUpFragment fragment=new BackUpFragment();

@@ -9,12 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.dfs.SamDFSTools.BuildConfig;
 import com.dfs.SamDFSTools.OEMRil;
 import com.dfs.SamDFSTools.R;
 import com.dfs.SamDFSTools.Util;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -33,7 +32,7 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     private TextView itemPhone;
     private TextView itemOperator;
     private TextView itemPhonetype;
-    private TextView itemSim;
+    private TextView itemSU;
     private TextView itemMNCMCC;
     private TextView itemRadiotype;
     private TextView itemSimReady;
@@ -80,6 +79,7 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         itemSoftware=(TextView)view.findViewById(R.id.textSoftware);
         itemBaseband=(TextView)view.findViewById(R.id.textBaseband);
         itemBootloader=(TextView)view.findViewById(R.id.textBootloader);
+        itemSU=(TextView)view.findViewById(R.id.textHasRoot);
         itemSpc = (TextView)view.findViewById(R.id.textSPC);
         itemIMEI = (TextView)view.findViewById(R.id.textIMEI);
         itemPhone = (TextView)view.findViewById(R.id.textPhone);
@@ -90,6 +90,7 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         itemUsbf = (TextView)view.findViewById(R.id.textUsbf);
 
         changeGeneral();
+        suSetIt();
         usbf();
 
         return view;
@@ -102,14 +103,11 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
 
         String network = util.radio();
         String sim = util.sim();
-
         String mncmcc = util.MNCMCC();
         String radiotype = util.radiotype();
-
         String imei = tm.getDeviceId();
         String phone = tm.getLine1Number();
         String operator = tm.getNetworkOperatorName();
-
 
         itemModel.setText("Model: "+model);
         itemSoftware.setText("Software: "+software);
@@ -120,14 +118,12 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         itemOperator.setText("Operator: " + operator);
         itemPhonetype.setText("Phonetype: "+radiotype);
         try {
-
             String mnc= mncmcc.substring(0, 3);
             String mcc = mncmcc.substring(3, 6);
             itemMNCMCC.setText("MNC: "+mnc + " MCC: " + mcc);
         } catch (Exception e6) {
             e6.printStackTrace();
         }
-        //itemMNCMCC.setText("MNC/MCC: "+mncmcc);
         itemSimReady.setText("Sim Ready: "+sim);
 
         msl();
@@ -146,7 +142,6 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
                    // foo = ((char) c);
                 } else {
                     itemUsbf.setText(foo);
-                   //itemUsbf.setTextColor(153238113);
                     return;
                 }
             }
@@ -154,6 +149,34 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         }
     }
 
+    public void suSetIt() {
+        if (isRooted()) {
+            itemSU.setText("Has Root: Yes!!!");
+            //itemSU.setTextColor(-16711936);
+            return;
+        }
+        itemSU.setText("Has Root: Device NOT rooted");
+    }
+
+    public static boolean findBinary(String binaryName) {
+        int i = 0;
+        if (null != null) {
+            return false;
+        }
+        String[] places = new String[]{"/sbin/", "/system/bin/", "/system/xbin/", "/data/local/xbin/", "/data/local/bin/", "/system/sd/xbin/", "/system/bin/failsafe/", "/data/local/"};
+        int length = places.length;
+        while (i < length) {
+            if (new File(places[i] + binaryName).exists()) {
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
+
+    private static boolean isRooted() {
+        return findBinary("su");
+    }
 
     public void msl() {
         try {
@@ -164,6 +187,9 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         }
 
     }
+
+
+
     public void setContext(Context context) {
         this.context = context;
     }
