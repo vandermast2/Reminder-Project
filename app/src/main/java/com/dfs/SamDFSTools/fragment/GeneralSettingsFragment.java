@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.dfs.SamDFSTools.OEMRil;
 import com.dfs.SamDFSTools.R;
 import com.dfs.SamDFSTools.Util;
@@ -38,14 +39,12 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     private TextView itemRadiotype;
     private TextView itemSimReady;
     private TextView itemUsbf;
-    TextView tv;
+    private TextView itemSuVersion;
 
     private static final String baseband;
     private static final String bootloader;
     private static final String model;
     private static final String software;
-
-
 
     private String board;
     private String operator;
@@ -90,15 +89,21 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         itemMNCMCC = (TextView)view.findViewById(R.id.textMNCMCC);
         itemSimReady = (TextView)view.findViewById(R.id.textSimReady);
         itemUsbf = (TextView)view.findViewById(R.id.textUsbf);
-        tv = (TextView)view.findViewById(R.id.textSUVersion);
+        itemSuVersion = (TextView)view.findViewById(R.id.textSUVersion);
+
+
+
+
 
         changeGeneral();
         suSetIt();
-        sudo();
+        suVersion();
         usbf();
 
         return view;
     }
+
+
 
     private void changeGeneral(){
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -182,7 +187,7 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         return findBinary("su");
     }
 
-    public void sudo() {
+    public void suVersion() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec("su -v").getInputStream()));
             StringBuilder log = new StringBuilder();
@@ -191,7 +196,7 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
                 if (line != null) {
                     log.append(line + "\n");
                 } else {
-                    tv.setText("Binary: " + log.toString());
+                    itemSuVersion.setText("Binary: " + log.toString());
                     return;
                 }
             }
@@ -210,8 +215,9 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     }
 
 
-
     public void setContext(Context context) {
         this.context = context;
     }
+
+
 }

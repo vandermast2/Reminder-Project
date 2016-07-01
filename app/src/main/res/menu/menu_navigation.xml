@@ -6,5 +6,30 @@
         android:orderInCategory="1"
         android:icon="@mipmap/ic_message_text"
         />
+    <item
+        android:id="@+id/actionNotificationItemCheckIMEI"
+        android:title="Check IMEI"
+        android:orderInCategory="2"
+        android:icon="@mipmap/ic_message_text"
+        />
+    <item
+        android:id="@+id/actionNotificationItemDebranding"
+        android:title="Debranding"
+        android:orderInCategory="3"
+        android:icon="@mipmap/ic_message_text"
+        />
+    <item
+        android:id="@+id/actionNotificationItemEFS"
+        android:title="EFS"
+        android:orderInCategory="4"
+        android:icon="@mipmap/ic_message_text"
+        />
+
+    <item
+        android:id="@+id/actionNotificationItemHiddenInterface"
+        android:title="HiddenInterface"
+        android:orderInCategory="5"
+        android:icon="@mipmap/ic_message_text"
+        />
 
 </menu>

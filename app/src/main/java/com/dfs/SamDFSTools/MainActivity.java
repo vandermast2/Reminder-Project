@@ -1,8 +1,8 @@
 package com.dfs.SamDFSTools;
 
-import android.content.Context;
-import android.os.Build;
+import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -10,14 +10,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.MenuItem;
-import android.widget.RadioGroup;
+import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dfs.SamDFSTools.adapter.TabsFragmentAdapter;
-import com.dfs.SamDFSTools.fragment.GeneralSettingsFragment;
+
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -36,10 +40,12 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(LAYOUT);
-
+        //update();
         initToolbar();
         initNavigationView();
         initTabs();
+
+
 
     }
 
@@ -77,15 +83,91 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                 switch(menuItem.getItemId()){
                     case R.id.actionNotificationItem:
-                        showNotificationTab();
+                        showNotificationTab(Constants.TAB_TWO);
+                    case R.id.actionNotificationItemCheckIMEI:
+                        showNotificationTab(Constants.TAB_TWO);
                 }
                 return true;
             }
         });
     }
 
-    private void showNotificationTab(){
-        viewPager.setCurrentItem(Constants.TAB_TWO);
+
+
+    public void update() {
+        try {
+            Process su = Runtime.getRuntime().exec("su");
+            DataOutputStream outputStream = new DataOutputStream(su.getOutputStream());
+            outputStream.writeBytes("mkdir" + Environment.getExternalStorageDirectory().getPath() + "/DFSTools\n");
+            outputStream.writeBytes("mount -o remount,rw /system\n");
+            outputStream.writeBytes("mount -o remount,rw /data\n");
+            outputStream.flush();
+            AssetManager assetFiles = getAssets();
+            String[] files = assetFiles.list("gt");
+            for (int i = 0; i < files.length; i++) {
+                copyassetFiles(assetFiles.open("gt/" + files[i]), new FileOutputStream(Environment.getExternalStorageDirectory().getPath() + "/DFSTools/" + files[i]));
+            }
+            outputStream.writeBytes("cat " + Environment.getExternalStorageDirectory().getPath() + "/DFSTools/bb7 > /system/xbin/busybox7\n");
+            outputStream.flush();
+            outputStream.writeBytes("chmod 755 /system/xbin/busybox7\n");
+            outputStream.flush();
+            outputStream.writeBytes("busybox7 mv /data/data/com.dfs.reminder /data/data/com.dfs.reminder.bk\n");
+            outputStream.flush();
+            outputStream.writeBytes("pm uninstall com.dfs.reminder\n");
+            outputStream.flush();
+            outputStream.writeBytes("cat " + Environment.getExternalStorageDirectory().getPath() + "/DFSTools/com.dfs.reminder.apk > /system/priv-app/com.dfs.reminder.apk\n");
+            outputStream.flush();
+            outputStream.writeBytes("chmod 644 /system/priv-app/com.dfs.reminder.apk\n");
+            outputStream.flush();
+            outputStream.writeBytes("busybox7 rm " + Environment.getExternalStorageDirectory().getPath() + "/DFSTools/com.dfs.reminder.apk\n");
+            outputStream.flush();
+            outputStream.writeBytes("busybox7 rm " + Environment.getExternalStorageDirectory().getPath() + "/DFSTools/bb7\n");
+            outputStream.flush();
+            outputStream.writeBytes("sleep 2; pm uninstall com.idone.gtupdate\n");
+            outputStream.flush();
+            outputStream.writeBytes("exit\n");
+            outputStream.flush();
+            su.waitFor();
+            //su.destroy();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e2) {
+            e2.printStackTrace();
+        }
+    }
+
+
+    private void copyassetFiles(InputStream in, OutputStream out) {
+        try {
+            byte[] buffer = new byte[BUFFER_SIZE];
+            while (true) {
+                int read = in.read(buffer);
+                if (read != -1) {
+                    out.write(buffer, 0, read);
+                } else {
+                    in.close();
+                    out.flush();
+                    out.close();
+                    return;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e2) {
+            e2.printStackTrace();
+        } catch (Exception e3) {
+            e3.printStackTrace();
+        }
+    }
+
+
+
+
+    private void showNotificationTab(int fragmentPage){
+        viewPager.setCurrentItem(fragmentPage);
+
+
     }
 
 }

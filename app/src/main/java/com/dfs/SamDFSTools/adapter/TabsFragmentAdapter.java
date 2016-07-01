@@ -52,5 +52,7 @@ public class TabsFragmentAdapter extends FragmentPagerAdapter{
         tabs.put(1, USB_settings.getInstanse(context));
         tabs.put(2, UnlockMenuFragment.getInstanse(context));
         tabs.put(3, BackUpFragment.getInstanse(context));
+        //tabs.put(4, UnlockMenuFragment.getInstanse(context));
+
     }
 }

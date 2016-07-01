@@ -4,4 +4,6 @@
     <item name="ScrollView01" type="id">ScrollView01</item>
     <item name="HEX_Label" type="id">HEX_Label</item>
     <item name="inbyte" type="id">inbyte</item>
+    <item name="textView1" type="id">textView1</item>
+    <item name="textView2" type="id">textView2</item>
 </resources>

@@ -14,5 +14,6 @@
     <string name="menu_item_notification">USB Settings</string>
 
     <string name="general_item_model">Model:</string>
+    <string name="title_activity_main2">Main2Activity</string>
 
 </resources>
