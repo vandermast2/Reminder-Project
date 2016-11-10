@@ -1,106 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
     android:orientation="vertical"
-    style="@style/Base.ThemeOverlay.AppCompat.Dark">
+    android:weightSum="1">
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="189dp"
+            android:weightSum="1">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="148dp"
-        android:layout_margin="20dp">
+                <Button
+                    android:text="@string/hidden_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnHiddenMenu"
+                    android:layout_weight="0.36"
+                    android:theme="@style/AppTheme" />
 
+                <Button
+                    android:text="Debranding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button6"
+                    android:layout_weight="0.36"
+                    android:theme="@style/AppTheme" />
 
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Factory mode"
-            android:id="@+id/switchFactory"
-            android:layout_gravity="top|right"
-            android:layout_margin="10dp" />
+                <Button
+                    android:text="@string/apn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button5"
+                    android:layout_weight="0.20" />
+        </LinearLayout>
 
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hidden Menu"
-            android:id="@+id/switchHiddenMenu"
-            android:layout_gravity="center_vertical|right"
-            android:layout_margin="10dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="196dp">
 
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Keystring"
-            android:layout_gravity="right|bottom"
-            android:layout_margin="10dp" />
+        </LinearLayout>
 
-        <Button
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+            android:layout_weight="0.99">
 
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:text="Debranding"
-            android:id="@+id/btnDebranding"
-            android:layout_gravity="left|top"
-            android:background="@color/color_btn"
-            android:textColor="@color/color_white" />
-
-        <Button
-
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:text="Hidden Menu"
-            android:id="@+id/btnHiddenMenu"
-            android:layout_gravity="left|center_vertical"
-            android:background="@color/color_btn"
-            android:textColor="@color/color_white" />
-
-        <Button
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button"
-            android:layout_gravity="left|bottom"
-            android:background="@color/color_btn"
-            android:textColor="@color/color_white" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.36">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button2" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView"
-            android:layout_gravity="center_horizontal|top" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button3"
-            android:layout_gravity="right|center_vertical" />
-
-        <Button
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button4"
-            android:layout_gravity="center_horizontal|bottom" />
-    </FrameLayout>
-
-
+        </LinearLayout>
 </LinearLayout>

@@ -1,9 +1,11 @@
 package com.dfs.SamDFSTools.fragment;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +18,12 @@ import com.dfs.SamDFSTools.Util;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Sam on 6/25/2016.
@@ -53,6 +59,7 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     private String imei;
     private String mncmcc;
     private String radiotype;
+    private String nativePath;
 
     public static GeneralSettingsFragment getInstanse(Context context) {
         Bundle args=new Bundle();
@@ -91,19 +98,15 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         itemUsbf = (TextView)view.findViewById(R.id.textUsbf);
         itemSuVersion = (TextView)view.findViewById(R.id.textSUVersion);
 
-
-
-
-
         changeGeneral();
+
         suSetIt();
         suVersion();
         usbf();
 
+
         return view;
     }
-
-
 
     private void changeGeneral(){
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -137,6 +140,7 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
 
         msl();
 
+
     }
 
     public void usbf() {
@@ -161,10 +165,11 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     public void suSetIt() {
         if (isRooted()) {
             itemSU.setText("Has Root: Yes!!!");
-            //itemSU.setTextColor(-16711936);
+            itemSU.setTextColor(Color.GREEN);
             return;
         }
         itemSU.setText("Has Root: Device NOT rooted");
+        itemSU.setTextColor(Color.RED);
     }
 
     public static boolean findBinary(String binaryName) {
@@ -205,15 +210,62 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     }
 
     public void msl() {
-        try {
-            OEMRil.getMSL(getContext());
-            itemSpc.setText("MSL/SPC: "+ OEMRil.stru.toString());
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+            try {
+                File fCmd = new File(context.getFilesDir(), "rilcmd");
+                copyFile("rilcmd", fCmd.getAbsolutePath());
+                fCmd.setExecutable(true, false);
+                String cmdResult = execCmd(fCmd.getAbsolutePath());
+
+                Matcher mSpc = Pattern.compile("MEIDAUTH:1,(\\d{6})").matcher(cmdResult);
+                if (mSpc.find()) {
+                    itemSpc.setText("SPC: " + mSpc.group(1));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
     }
 
+    private String execCmd(String path) {
+        try {
+            Process nativeApp = Runtime.getRuntime().exec(path);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(nativeApp.getInputStream()));
+            char[] buffer = new char[AccessibilityNodeInfoCompat.ACTION_SCROLL_FORWARD];
+            StringBuffer output = new StringBuffer();
+            while (true) {
+                int read = reader.read(buffer);
+                if (read > 0) {
+                    output.append(buffer, 0, read);
+                } else {
+                    reader.close();
+                    nativeApp.waitFor();
+                    return output.toString();
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String copyFile(String assetPath, String localPath) {
+        try {
+            InputStream in = context.getAssets().open(assetPath);
+            FileOutputStream out = new FileOutputStream(localPath);
+            byte[] buffer = new byte[AccessibilityNodeInfoCompat.ACTION_SCROLL_FORWARD];
+            while (true) {
+                int read = in.read(buffer);
+                if (read > 0) {
+                    out.write(buffer, 0, read);
+                } else {
+                    out.close();
+                    in.close();
+                    return localPath;
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void setContext(Context context) {
         this.context = context;

@@ -6,7 +6,6 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
-
 import com.dfs.SamDFSTools.fragment.GeneralSettingsFragment;
 
 import java.util.List;

@@ -2,7 +2,6 @@ package com.dfs.SamDFSTools.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Process;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,19 +10,19 @@ import android.widget.Button;
 import android.widget.Switch;
 
 import com.dfs.SamDFSTools.R;
+import com.dfs.SamDFSTools.Util;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 
 /**
  * Created by Sam on 6/25/2016.
  */
 public class UnlockMenuFragment extends AbstractTagFragment {
     private static final int LAYOUT= R.layout.fragment_unlock;
-    private java.lang.Process su = null;
+    private Process su = null;
     private Switch switchHiddenMenu;
     private Switch switchFactory;
     private Button btnDebranding;
@@ -43,40 +42,39 @@ public class UnlockMenuFragment extends AbstractTagFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
 
-        btnDebranding = (Button) view.findViewById(R.id.btnDebranding);
-        switchHiddenMenu = (Switch) view.findViewById(R.id.switchHiddenMenu);
-        switchFactory = (Switch) view.findViewById(R.id.switchFactory);
+//        btnDebranding = (Button) view.findViewById(R.id.btnDebranding);
+//        switchHiddenMenu = (Switch) view.findViewById(R.id.switchHiddenMenu);
+//        switchFactory = (Switch) view.findViewById(R.id.switchFactory);
 
+//        btnDebranding.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                debranding();
+//            }
+//        });
 
-        btnDebranding.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                debranding();
-            }
-        });
-
-        try {
-            factory();
-        } catch (Exception e) {
-        }
 //        try {
-//            keystring();
-//        } catch (Exception e3) {
+//            factory();
+//        } catch (Exception e) {
 //        }
+////        try {
+////            keystring();
+////        } catch (Exception e3) {
+////        }
+////        try {
+////            buildtype();
+////        } catch (Exception e4) {
+////        }
 //        try {
-//            buildtype();
-//        } catch (Exception e4) {
+//            hidden();
+//        } catch (Exception e5) {
 //        }
-        try {
-            hidden();
-        } catch (Exception e5) {
-        }
 
 
 
         return view;
     }
 
-    public void hidden() {
+    public void hiddenMenuOpen() {
         Exception e1;
         try {
             su = Runtime.getRuntime().exec(new String[]{"cat", "/efs/carrier/HiddenMenu"});
@@ -134,7 +132,7 @@ public class UnlockMenuFragment extends AbstractTagFragment {
         try {
             BufferedReader reader2 = new BufferedReader(new InputStreamReader(su.getInputStream()));
             try {
-                this.switchFactory = (Switch) view.findViewById(R.id.switchFactory);
+//                this.switchFactory = (Switch) view.findViewById(R.id.swFactory);
                 reader = reader2;
             } catch (Exception e2) {
                 e1 = e2;

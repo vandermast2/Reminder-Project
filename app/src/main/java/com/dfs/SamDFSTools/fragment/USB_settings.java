@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.dfs.SamDFSTools.R;
 
@@ -59,7 +58,7 @@ public class USB_settings extends AbstractTagFragment {
         this.SET_DM_PORT_STATUS_LIST[8] = "setMASSSTORAGE";
         this.SET_DM_PORT_STATUS_LIST[9] = "setMASSSTORAGEADB";
         this.SET_DM_PORT_CONFIG_LIST = new String[10];
-        this.SET_DM_PORT_CONFIG_LIST[0] = "mtp";
+        this.SET_DM_PORT_CONFIG_LIST[0] = "diag,modem";
         this.SET_DM_PORT_CONFIG_LIST[1] = "mtp,adb";
         this.SET_DM_PORT_CONFIG_LIST[2] = "ptp";
         this.SET_DM_PORT_CONFIG_LIST[3] = "ptp,adb";
@@ -274,7 +273,7 @@ public class USB_settings extends AbstractTagFragment {
         }
         String str2 = log.toString().trim();
         Log.i("USBSettings", 0 + "CurrentUSB Setting : " + str2);
-        if (str2.equals("mtp")) {
+        if (str2.equals("diag,modem")) {
             Log.i("USBSettings", 1 + "Check Radio Button is mtp");
             setDefaultSelection(1);
         }
