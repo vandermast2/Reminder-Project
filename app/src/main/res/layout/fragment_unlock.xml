@@ -9,8 +9,18 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="189dp"
-            android:weightSum="1">
+            android:layout_height="61dp"
+            android:weightSum="1"
+            android:layout_weight="0.03">
+
+                <Button
+                    android:text="Debranding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnDebranding"
+                    android:theme="@style/AppTheme"
+                    android:layout_weight="0.40"
+                    tools:ignore="ButtonStyle,NestedWeights" />
 
                 <Button
                     android:text="@string/hidden_menu"
@@ -18,28 +28,64 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/btnHiddenMenu"
                     android:layout_weight="0.36"
-                    android:theme="@style/AppTheme" />
-
-                <Button
-                    android:text="Debranding"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button6"
-                    android:layout_weight="0.36"
-                    android:theme="@style/AppTheme" />
+                    android:theme="@style/AppTheme"
+                    tools:ignore="ButtonStyle" />
 
                 <Button
                     android:text="@string/apn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/button5"
-                    android:layout_weight="0.20" />
+                    android:layout_weight="0.20"
+                    tools:ignore="ButtonStyle" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="196dp">
+            android:layout_height="wrap_content">
+
+                <Button
+                    android:text="SIM Unlock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnUnlockSim"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginRight="15dp"
+                    tools:ignore="RtlHardcoded" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+
+                        <RadioGroup
+                            android:layout_width="134dp"
+                            android:layout_height="match_parent"
+                            tools:ignore="UselessParent">
+
+                                <RadioButton
+                                    android:text="Sprint"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/radioButtonSprint"
+                                    android:layout_width="130dp" />
+
+                                <RadioButton
+                                    android:text="Verizon"
+                                    android:layout_width="130dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/radioButtonVerizon" />
+
+                                <RadioButton
+                                    android:text="AT&amp;T"
+                                    android:layout_width="130dp"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/radioButtonATT" />
+
+                        </RadioGroup>
+                </LinearLayout>
 
         </LinearLayout>
 

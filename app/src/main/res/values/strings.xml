@@ -7,7 +7,7 @@
     <string name="view_navigation_close">Close</string>
 
     <string name="tab_item_Unlock">Unlock</string>
-    <string name="tab_item_backup">Back Up</string>
+    <string name="tab_item_backup">BackUp</string>
     <string name="tab_item_General">General</string>
     <string name="tab_item_USB_settings">USB Settings</string>
 
@@ -19,5 +19,8 @@
     <string name="apn">APN Settings</string>
     <string name="factory_def">Factory Def</string>
     <string name="hidden_menu">Hidden Menu</string>
+    <string name="sec_backup">SEC BackUp</string>
+    <string name="efs_backup">EFS Backup</string>
+    <string name="sec_restore">SEC Restore</string>
 
 </resources>

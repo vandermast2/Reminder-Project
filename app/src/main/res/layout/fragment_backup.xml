@@ -4,5 +4,31 @@
     android:layout_height="match_parent">
 
 
+    <Button
+        android:text="@string/sec_backup"
+        android:layout_width="122dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSecBackup"
+        android:layout_margin="10dp" />
 
+    <Button
+        android:text="@string/efs_backup"
+        android:layout_width="122dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnEFSBackup"
+        android:layout_margin="10dp" />
+
+    <Button
+        android:text="@string/sec_restore"
+        android:layout_width="122dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSECRestore"
+        android:layout_margin="10dp" />
+
+    <Button
+        android:text="EFS Restore"
+        android:layout_width="122dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnEFSRestore"
+        android:layout_margin="10dp" />
 </LinearLayout>
