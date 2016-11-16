@@ -185,6 +185,20 @@ public class UnlockMenuFragment extends AbstractTagFragment {
 
     }
 
+    private void OMADMEDIT() {
+        try {
+            Process su = Runtime.getRuntime().exec("su");
+            DataOutputStream outputStream = new DataOutputStream(su.getOutputStream());
+            outputStream.writeBytes("am start -a android.intent.action.MAIN -n com.samsung.syncservice/com.samsung.syncservice.dm.hiddenmenu.omadmnodes.CustomizationNodeEditor\n");
+            outputStream.flush();
+            outputStream.writeBytes("exit\n");
+            outputStream.flush();
+            su.waitFor();
+        } catch (IOException e) {
+        } catch (InterruptedException e2) {
+        }
+    }
+
     public void setContext(Context context) {
         this.context = context;
     }
