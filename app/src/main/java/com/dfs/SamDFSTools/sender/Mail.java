@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.provider.SyncStateContract;
 import android.util.Log;
+
+import com.dfs.SamDFSTools.Constants;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -31,12 +34,12 @@ public class Mail {
 
         createBackupDB();
 
-        File path = new File(Environment.getExternalStorageDirectory(), "/telephony.db.bk");
+        File path = new File(Constants.TMP_PATH, "/telephony.db.bk");
         Log.i(getClass().getSimpleName(), "send  task - start");
         Intent emailIntent = new Intent("android.intent.action.SEND");
         String emailtext = "Request GalaxyTools support for my model!\n\nHere are my details\nModel is: " + model + "\n" + "Bootloader is: " + bootloader + "\n" + "Baseband is: " + baseband + "\n" + "Software version: " + software;
         emailIntent.setType("plain/text");
-        emailIntent.putExtra("android.intent.extra.EMAIL", new String[]{"cdmatool.ftp@gmail.com"});
+        emailIntent.putExtra("android.intent.extra.EMAIL", new String[]{"breez.dp@gmail.com"});
         emailIntent.putExtra("android.intent.extra.STREAM", Uri.parse("file://" + path));
         emailIntent.putExtra("android.intent.extra.TEXT", emailtext);
 

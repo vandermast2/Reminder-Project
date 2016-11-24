@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dfs.SamDFSTools.adapter.TabsFragmentAdapter;
+import com.dfs.SamDFSTools.sender.Mail;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,9 +34,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(LAYOUT);
 
 
+
         initToolbar();
         initNavigationView();
         initTabs();
+
+
     }
 
     private void initToolbar() {
