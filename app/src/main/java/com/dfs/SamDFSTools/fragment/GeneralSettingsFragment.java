@@ -188,7 +188,7 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         return false;
     }
 
-    private static boolean isRooted() {
+    public static boolean isRooted() {
         return findBinary("su");
     }
 

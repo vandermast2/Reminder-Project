@@ -19,10 +19,11 @@ public class Mail {
     String bootloader;
     String baseband;
     String software;
+
     public Mail(){
         model = Build.MODEL;
         bootloader = Build.BOOTLOADER;
-        baseband=Build.getRadioVersion();
+        baseband = Build.getRadioVersion();
         software = Build.DISPLAY;
     }
 
