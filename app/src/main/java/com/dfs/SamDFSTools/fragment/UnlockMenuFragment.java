@@ -17,11 +17,11 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * Created by Sam on 6/25/2016.
- */
+
 public class UnlockMenuFragment extends AbstractTagFragment {
-    private static final int LAYOUT= R.layout.fragment_unlock;
+    private static final int LAYOUT = R.layout.fragment_unlock;
+
+
     private Process su = null;
     private Switch switchHiddenMenu;
     private Switch switchFactory;
@@ -29,14 +29,15 @@ public class UnlockMenuFragment extends AbstractTagFragment {
 
 
     public static UnlockMenuFragment getInstanse(Context context) {
-        Bundle args=new Bundle();
-        UnlockMenuFragment fragment=new UnlockMenuFragment();
+        Bundle args = new Bundle();
+        UnlockMenuFragment fragment = new UnlockMenuFragment();
         fragment.setArguments(args);
         fragment.setContext(context);
         fragment.setTitle(context.getString(R.string.tab_item_Unlock));
         return fragment;
 
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -168,7 +169,7 @@ public class UnlockMenuFragment extends AbstractTagFragment {
         }
     }
 
-    private void debranding(){
+    private void debranding() {
         try {
             su = Runtime.getRuntime().exec("su");
             DataOutputStream outputStream = new DataOutputStream(su.getOutputStream());
@@ -202,5 +203,6 @@ public class UnlockMenuFragment extends AbstractTagFragment {
     public void setContext(Context context) {
         this.context = context;
     }
+
 
 }

@@ -25,6 +25,7 @@ import java.io.InputStreamReader;
 public class USB_settings extends AbstractTagFragment {
     private static final int LAYOUT= R.layout.fragment_usb_settings;
 
+
     private static String[] SET_DM_PORT_STATUS_LIST1;
     public String[] SET_CPAP_CONFIG_LIST;
     public String[] SET_DM_PORT_CONFIG_LIST;
@@ -318,6 +319,7 @@ public class USB_settings extends AbstractTagFragment {
     public void setContext(Context context) {
         this.context = context;
     }
+
 
 
 

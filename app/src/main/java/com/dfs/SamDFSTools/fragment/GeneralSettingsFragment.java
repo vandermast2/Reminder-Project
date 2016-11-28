@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
  * Created by Sam on 6/25/2016.
  */
 public class GeneralSettingsFragment extends AbstractTagFragment {
-    private static final int LAYOUT= R.layout.fragment_general_settings;
+    private static final int LAYOUT = R.layout.fragment_general_settings;
 
     private TextView itemModel;
     private TextView itemSoftware;
@@ -62,8 +62,8 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     private String nativePath;
 
     public static GeneralSettingsFragment getInstanse(Context context) {
-        Bundle args=new Bundle();
-        GeneralSettingsFragment fragment=new GeneralSettingsFragment();
+        Bundle args = new Bundle();
+        GeneralSettingsFragment fragment = new GeneralSettingsFragment();
         fragment.setArguments(args);
         fragment.setContext(context);
         fragment.setTitle(context.getString(R.string.tab_item_General));
@@ -83,20 +83,20 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
 
-        itemModel=(TextView) view.findViewById(R.id.textModel);
-        itemSoftware=(TextView)view.findViewById(R.id.textSoftware);
-        itemBaseband=(TextView)view.findViewById(R.id.textBaseband);
-        itemBootloader=(TextView)view.findViewById(R.id.textBootloader);
-        itemSU=(TextView)view.findViewById(R.id.textHasRoot);
-        itemSpc = (TextView)view.findViewById(R.id.textSPC);
-        itemIMEI = (TextView)view.findViewById(R.id.textIMEI);
-        itemPhone = (TextView)view.findViewById(R.id.textPhone);
-        itemOperator = (TextView)view.findViewById(R.id.textOperator);
-        itemPhonetype = (TextView)view.findViewById(R.id.textPhohetype);
-        itemMNCMCC = (TextView)view.findViewById(R.id.textMNCMCC);
-        itemSimReady = (TextView)view.findViewById(R.id.textSimReady);
-        itemUsbf = (TextView)view.findViewById(R.id.textUsbf);
-        itemSuVersion = (TextView)view.findViewById(R.id.textSUVersion);
+        itemModel = (TextView) view.findViewById(R.id.textModel);
+        itemSoftware = (TextView) view.findViewById(R.id.textSoftware);
+        itemBaseband = (TextView) view.findViewById(R.id.textBaseband);
+        itemBootloader = (TextView) view.findViewById(R.id.textBootloader);
+        itemSU = (TextView) view.findViewById(R.id.textHasRoot);
+        itemSpc = (TextView) view.findViewById(R.id.textSPC);
+        itemIMEI = (TextView) view.findViewById(R.id.textIMEI);
+        itemPhone = (TextView) view.findViewById(R.id.textPhone);
+        itemOperator = (TextView) view.findViewById(R.id.textOperator);
+        itemPhonetype = (TextView) view.findViewById(R.id.textPhohetype);
+        itemMNCMCC = (TextView) view.findViewById(R.id.textMNCMCC);
+        itemSimReady = (TextView) view.findViewById(R.id.textSimReady);
+        itemUsbf = (TextView) view.findViewById(R.id.textUsbf);
+        itemSuVersion = (TextView) view.findViewById(R.id.textSUVersion);
 
         changeGeneral();
 
@@ -108,7 +108,7 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         return view;
     }
 
-    private void changeGeneral(){
+    private void changeGeneral() {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         Util util = new Util(context);
         //String board = System.getProperty("ro.board");
@@ -121,22 +121,22 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         String phone = tm.getLine1Number();
         String operator = tm.getNetworkOperatorName();
 
-        itemModel.setText("Model: "+model);
-        itemSoftware.setText("Software: "+software);
-        itemBaseband.setText("Baseband: "+baseband);
-        itemBootloader.setText("Bootloader: "+bootloader);
-        itemIMEI.setText("IMEI: "+imei);
-        itemPhone.setText("Phone №: "+phone);
+        itemModel.setText("Model: " + model);
+        itemSoftware.setText("Software: " + software);
+        itemBaseband.setText("Baseband: " + baseband);
+        itemBootloader.setText("Bootloader: " + bootloader);
+        itemIMEI.setText("IMEI: " + imei);
+        itemPhone.setText("Phone №: " + phone);
         itemOperator.setText("Operator: " + operator);
-        itemPhonetype.setText("Phonetype: "+radiotype);
+        itemPhonetype.setText("Phonetype: " + radiotype);
         try {
-            String mnc= mncmcc.substring(0, 3);
+            String mnc = mncmcc.substring(0, 3);
             String mcc = mncmcc.substring(3, 6);
-            itemMNCMCC.setText("MNC: "+mnc + " MCC: " + mcc);
+            itemMNCMCC.setText("MNC: " + mnc + " MCC: " + mcc);
         } catch (Exception e6) {
             e6.printStackTrace();
         }
-        itemSimReady.setText("Sim Ready: "+sim);
+        itemSimReady.setText("Sim Ready: " + sim);
 
         msl();
 
@@ -151,8 +151,8 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
             while (true) {
                 int c = isr.read();
                 if (c >= 0) {
-                    foo =foo+((char) c);
-                   // foo = ((char) c);
+                    foo = foo + ((char) c);
+                    // foo = ((char) c);
                 } else {
                     itemUsbf.setText(foo);
                     return;
@@ -210,19 +210,19 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     }
 
     public void msl() {
-            try {
-                File fCmd = new File(context.getFilesDir(), "rilcmd");
-                copyFile("rilcmd", fCmd.getAbsolutePath());
-                fCmd.setExecutable(true, false);
-                String cmdResult = execCmd(fCmd.getAbsolutePath());
+        try {
+            File fCmd = new File(context.getFilesDir(), "rilcmd");
+            copyFile("rilcmd", fCmd.getAbsolutePath());
+            fCmd.setExecutable(true, false);
+            String cmdResult = execCmd(fCmd.getAbsolutePath());
 
-                Matcher mSpc = Pattern.compile("MEIDAUTH:1,(\\d{6})").matcher(cmdResult);
-                if (mSpc.find()) {
-                    itemSpc.setText("SPC: " + mSpc.group(1));
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+            Matcher mSpc = Pattern.compile("MEIDAUTH:1,(\\d{6})").matcher(cmdResult);
+            if (mSpc.find()) {
+                itemSpc.setText("SPC: " + mSpc.group(1));
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -270,6 +270,5 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     public void setContext(Context context) {
         this.context = context;
     }
-
 
 }

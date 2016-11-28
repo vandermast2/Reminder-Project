@@ -13,18 +13,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dfs.SamDFSTools.adapter.TabsFragmentAdapter;
-import com.dfs.SamDFSTools.sender.Mail;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int LAYOUT=R.layout.activity_main;
+    private static final int LAYOUT = R.layout.activity_main;
     private Button btnAFB;
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ViewPager viewPager;
-
-    private TextView model_item;
 
 
     @Override
@@ -32,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(LAYOUT);
-
 
 
         initToolbar();
@@ -43,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initToolbar() {
-        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -55,17 +51,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initTabs() {
-        viewPager = (ViewPager)findViewById(R.id.viewPager);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
         TabsFragmentAdapter adapter = new TabsFragmentAdapter(this, getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
-        TabLayout tabLayout = (TabLayout)findViewById(R.id.tabLayout);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
     }
 
     private void initNavigationView() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.view_navigation_open,R.string.view_navigation_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.view_navigation_open, R.string.view_navigation_close);
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -74,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 drawerLayout.closeDrawers();
-                switch(menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.actionNotificationItem:
                         showNotificationTab(Constants.TAB_TWO);
                     case R.id.actionNotificationItemCheckIMEI:
@@ -85,11 +81,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-    private void showNotificationTab(int fragmentPage){
+    private void showNotificationTab(int fragmentPage) {
         viewPager.setCurrentItem(fragmentPage);
 
 
     }
+
 
 }

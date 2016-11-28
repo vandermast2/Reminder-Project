@@ -3,8 +3,6 @@ package com.dfs.SamDFSTools.sender;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
-import android.provider.SyncStateContract;
 import android.util.Log;
 
 import com.dfs.SamDFSTools.Constants;
@@ -23,19 +21,18 @@ public class Mail {
     String baseband;
     String software;
 
-    public Mail(){
+    public Mail() {
         model = Build.MODEL;
         bootloader = Build.BOOTLOADER;
         baseband = Build.getRadioVersion();
         software = Build.DISPLAY;
     }
 
-    public void sendMail(){
+    public void sendMail() {
 
         createBackupDB();
 
         File path = new File(Constants.TMP_PATH, "/telephony.db.bk");
-        Log.i(getClass().getSimpleName(), "send  task - start");
         Intent emailIntent = new Intent("android.intent.action.SEND");
         String emailtext = "Request GalaxyTools support for my model!\n\nHere are my details\nModel is: " + model + "\n" + "Bootloader is: " + bootloader + "\n" + "Baseband is: " + baseband + "\n" + "Software version: " + software;
         emailIntent.setType("plain/text");
@@ -44,7 +41,8 @@ public class Mail {
         emailIntent.putExtra("android.intent.extra.TEXT", emailtext);
 
     }
-    private void createBackupDB(){
+
+    private void createBackupDB() {
         try {
             Process su = Runtime.getRuntime().exec("su");
             DataOutputStream outputStream = new DataOutputStream(su.getOutputStream());

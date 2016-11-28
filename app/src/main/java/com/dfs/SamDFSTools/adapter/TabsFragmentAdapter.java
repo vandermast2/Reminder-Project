@@ -5,8 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.dfs.SamDFSTools.fragment.AbstractTagFragment;
+import com.dfs.SamDFSTools.R;
 
+import com.dfs.SamDFSTools.fragment.AbstractTagFragment;
 import com.dfs.SamDFSTools.fragment.GeneralSettingsFragment;
 import com.dfs.SamDFSTools.fragment.BackUpFragment;
 import com.dfs.SamDFSTools.fragment.UnlockMenuFragment;
@@ -20,20 +21,22 @@ import java.util.Map;
  */
 public class TabsFragmentAdapter extends FragmentPagerAdapter{
 
-
-    private Map<Integer, AbstractTagFragment> tabs;
     private Context context;
+    private Map<Integer, AbstractTagFragment> tabs;
+
 
     public TabsFragmentAdapter(Context context, FragmentManager fm) {
         super(fm);
         this.context = context;
-        initTabsMap(context);
-
+        initTabs(context);
         }
 
-    @Override
-    public Fragment getItem(int position) {
-        return tabs.get(position);
+    private void initTabs(Context context) {
+        tabs = new HashMap<>();
+        tabs.put(0, GeneralSettingsFragment.getInstanse(context));
+        tabs.put(1, USB_settings.getInstanse(context));
+        tabs.put(2, UnlockMenuFragment.getInstanse(context));
+        tabs.put(3, BackUpFragment.getInstanse(context));
     }
 
     @Override
@@ -42,17 +45,13 @@ public class TabsFragmentAdapter extends FragmentPagerAdapter{
     }
 
     @Override
+    public Fragment getItem(int position) {
+        return tabs.get(position);
+    }
+
+    @Override
     public int getCount() {
         return tabs.size();
     }
 
-    private void initTabsMap(Context context) {
-        tabs = new HashMap<>();
-        tabs.put(0, GeneralSettingsFragment.getInstanse(context));
-        tabs.put(1, USB_settings.getInstanse(context));
-        tabs.put(2, UnlockMenuFragment.getInstanse(context));
-        tabs.put(3, BackUpFragment.getInstanse(context));
-        //tabs.put(4, UnlockMenuFragment.getInstanse(context));
-
-    }
 }

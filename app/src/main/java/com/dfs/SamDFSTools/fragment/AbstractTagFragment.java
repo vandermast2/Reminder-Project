@@ -15,7 +15,6 @@ public class AbstractTagFragment extends Fragment {
     }
 
     public String getTitle() {
-
         return title;
     }
 }

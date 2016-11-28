@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.dfs.SamDFSTools.R;
+import com.dfs.SamDFSTools.backup.AndroidBackup;
 import com.dfs.SamDFSTools.sender.Mail;
 
 import java.io.DataOutputStream;
@@ -22,8 +24,7 @@ import java.io.IOException;
 public class BackUpFragment extends AbstractTagFragment  {
     private static final int LAYOUT= R.layout.fragment_backup;
 
-
-    private Button btnSignIn;
+    private Button btnEFSBackup;
 
     public static BackUpFragment getInstanse(Context context) {
 
@@ -40,13 +41,13 @@ public class BackUpFragment extends AbstractTagFragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
-        btnSignIn = (Button)view.findViewById(R.id.btnSignIn);
+        btnEFSBackup = (Button)view.findViewById(R.id.btnEFSBackup);
 
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
+        btnEFSBackup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Mail m =new Mail();
-                m.sendMail();
+                AndroidBackup ab = new AndroidBackup();
+                ab.createEFSBackup();
             }
         });
         return view;
@@ -55,7 +56,5 @@ public class BackUpFragment extends AbstractTagFragment  {
     public void setContext(Context context) {
         this.context = context;
     }
-
-
 
 }
