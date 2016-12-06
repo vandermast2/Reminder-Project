@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.dfs.reminder"
+        applicationId "com.dfs.SDFS"
         minSdkVersion 17
         targetSdkVersion 24
         versionCode 1

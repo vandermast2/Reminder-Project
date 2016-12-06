@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:orientation="vertical"
-        tools:ignore="UselessParent">
+        tools:ignore="UselessParent"
+        android:soundEffectsEnabled="true">
 
         <RadioButton
             android:layout_width="wrap_content"

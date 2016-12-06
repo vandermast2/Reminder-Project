@@ -22,5 +22,6 @@
     <string name="sec_backup">SEC BackUp</string>
     <string name="efs_backup">EFS Backup</string>
     <string name="sec_restore">SEC Restore</string>
+    <string name="tab_item_backup_part">Backup Partition</string>
 
 </resources>

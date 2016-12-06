@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.dfs.SamDFSTools.BackUpPartition;
+import com.dfs.SamDFSTools.MainActivity;
 import com.dfs.SamDFSTools.R;
 import com.dfs.SamDFSTools.backup.AndroidBackup;
 import com.dfs.SamDFSTools.sender.Mail;
@@ -25,6 +27,7 @@ public class BackUpFragment extends AbstractTagFragment  {
     private static final int LAYOUT= R.layout.fragment_backup;
 
     private Button btnEFSBackup;
+    private Button btnBackupPartition;
 
     public static BackUpFragment getInstanse(Context context) {
 
@@ -42,6 +45,7 @@ public class BackUpFragment extends AbstractTagFragment  {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
         btnEFSBackup = (Button)view.findViewById(R.id.btnEFSBackup);
+        btnBackupPartition = (Button)view.findViewById(R.id.btnBackupPartitions);
 
         btnEFSBackup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +54,15 @@ public class BackUpFragment extends AbstractTagFragment  {
                 ab.createEFSBackup();
             }
         });
+
+        btnBackupPartition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),BackUpPartition.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 

@@ -1,10 +1,15 @@
 package com.dfs.SamDFSTools.fragment;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Telephony;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
@@ -30,6 +35,7 @@ import java.util.regex.Pattern;
  */
 public class GeneralSettingsFragment extends AbstractTagFragment {
     private static final int LAYOUT = R.layout.fragment_general_settings;
+    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 0;
 
     private TextView itemModel;
     private TextView itemSoftware;
@@ -109,17 +115,23 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
     }
 
     private void changeGeneral() {
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+
+        if (ContextCompat.checkSelfPermission(this.getActivity(), Manifest.permission.READ_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.READ_PHONE_STATE}, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+            // We do not have this permission. Let's ask the user
+        }
+        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         Util util = new Util(context);
-        //String board = System.getProperty("ro.board");
+//        String board = System.getProperty("ro.board");
 
         String network = util.radio();
         String sim = util.sim();
         String mncmcc = util.MNCMCC();
         String radiotype = util.radiotype();
-        String imei = tm.getDeviceId();
-        String phone = tm.getLine1Number();
-        String operator = tm.getNetworkOperatorName();
+        String imei = telephonyManager.getDeviceId();
+        String phone = telephonyManager.getLine1Number();
+        String operator = telephonyManager.getNetworkOperatorName();
 
         itemModel.setText("Model: " + model);
         itemSoftware.setText("Software: " + software);
@@ -139,6 +151,7 @@ public class GeneralSettingsFragment extends AbstractTagFragment {
         itemSimReady.setText("Sim Ready: " + sim);
 
         msl();
+
 
 
     }
